@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    guest: [
+      {
+        name: 'Treasure',
+        isConfirmed: false
+      },
+      {
+        name: 'Nic',
+        isConfirmed: true
+      }
+    ]
+  }
+
+  //method for total of invited guests
+  getTotalInvited = () => this.state.guests.length;
+  // getAttendingGuests =() =>
+  // getUnconfirmedGuests = () =>
+
+
   render() {
     return (
       <div className="App">
