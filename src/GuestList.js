@@ -1,22 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Guest from './Guest';
+
 const GuestList = props => 
 <ul>
     {props.guests.map((guest, index) =>
-        <li key={index}>
-            <span>{guest.name}</span>
-                <label>
-                    <input type="checkbox" checked={guest.isConfirmed}/> Confirmed
-                </label>
-            <button>edit</button>
-            <button>remove</button>
-        </li>
+        <Guest 
+        key={index} 
+        name={guest.name} 
+        isConfirmed={guest.isConfirmed}
+        isEditing={guest.isEditing}
+        /*want this to be called when the checkbox is changed.  Passes
+        this down through the guests components props. The change occurs in the guest 
+        component. The handler requires an index.
+        This a closure.  
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures*/
+        handleConfirmation={() => props.toggleConfirmationAt(index)}
+        handleToggleEditing={() => props.toggleEditingAt(index)} />
     )}
 </ul>
 
-GuestList.prototypes = {
-    guests: PropTypes.array.isRequired
+GuestList.propTypes = {
+    guests: PropTypes.array.isRequired,
+    //adds the new prop the prop type
+    toggleConfirmationAt: PropTypes.func.isRequired,
+    toggleEditingAt: PropTypes.func.isRequired
 }
 
 export default GuestList;
