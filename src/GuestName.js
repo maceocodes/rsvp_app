@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Guest = props => {
+const GuestName = props => {
     if (props.isEditing) {
         return (
             <input 
             type="text" 
-            value={props.children} />
+            value={props.children} 
+            onChange={props.handleNameEdits} 
+            />
         );
     }
 
@@ -18,9 +20,9 @@ const Guest = props => {
 };
 
 
-Guest.propTypes = {
+GuestName.propTypes = {
     isEditing: PropTypes.bool.isRequired,
-
+    handleNameEdits: PropTypes.func.isRequired
 }
 
-export default Guest;
+export default GuestName;

@@ -17,7 +17,11 @@ const GuestList = props =>
         This a closure.  
         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures*/
         handleConfirmation={() => props.toggleConfirmationAt(index)}
-        handleToggleEditing={() => props.toggleEditingAt(index)} />
+        handleToggleEditing={() => props.toggleEditingAt(index)}
+        /*Accepts the new name and sets that guests state  Index indicates
+        the right name to change.  In the body we call the function on props that
+        takes an index and the text.  Call the function "setNameAt" */
+        setName={text => props.setNameAt(text, index)} />
     )}
 </ul>
 
@@ -25,7 +29,8 @@ GuestList.propTypes = {
     guests: PropTypes.array.isRequired,
     //adds the new prop the prop type
     toggleConfirmationAt: PropTypes.func.isRequired,
-    toggleEditingAt: PropTypes.func.isRequired
+    toggleEditingAt: PropTypes.func.isRequired,
+    setNameAt: PropTypes.func.isRequired
 }
 
 export default GuestList;
